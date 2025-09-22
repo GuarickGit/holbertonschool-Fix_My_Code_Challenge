@@ -55,3 +55,19 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 
 	return (1);
 }
+
+/*
+ * Explication de la correction :
+ * - Dans la version initiale, il était écrit :
+ *       (*head)->prev->prev = (*head)->prev;
+ *   Ce qui reliait le "grand-père" au lieu de mettre à jour
+ *   le pointeur "next" du précédent.
+ *
+ * - Pour supprimer correctement un nœud au milieu d'une double liste :
+ *     1. Le "prev->next" doit pointer vers "next".
+ *     2. Le "next->prev" doit pointer vers "prev".
+ *     3. Ensuite seulement, on libère le nœud.
+ *
+ * - Pour le cas particulier de l'index 0, on déplace simplement la tête
+ *   sur l'élément suivant et on ajuste son "prev" à NULL.
+ */
