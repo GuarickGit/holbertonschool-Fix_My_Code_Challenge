@@ -101,3 +101,12 @@ password")
     if user_2.is_valid_password("No pwd"):
         print("is_valid_password should return False if no password set \
 before")
+
+# 1. Dans le setter, utilisation de self.__password au lieu de self._password :
+#    - self._password créait un nouvel attribut inutile
+#    - self.__password est l’attribut privé défini pour stocker le hash
+#
+# 2. Uniformisation de la casse lors du hashage :
+#    - Dans le setter, on stocke le hash en minuscules avec .lower()
+#    - Dans is_valid_password, on compare aussi en minuscules avec .lower()
+#    => Cela garantit que la comparaison fonctionne correctement
