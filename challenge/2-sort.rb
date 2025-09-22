@@ -29,3 +29,14 @@ ARGV.each do |arg|
 end
 
 puts result
+
+
+# Correction :
+# Le code initial utilisait `result.insert(i - 1, i_arg)`.
+# Cela décalait l’insertion d’une case vers la gauche et provoquait un ordre incorrect :
+#   - Les nouveaux nombres n’étaient pas insérés au bon endroit
+#   - Les entiers négatifs se retrouvaient systématiquement rejetés à la fin
+#
+# La solution est de remplacer par `result.insert(i, i_arg)`,
+# ce qui insère la valeur exactement à la bonne position trouvée dans la boucle,
+# et garantit un tri numérique croissant correct.
