@@ -10,11 +10,13 @@
  */
 int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 {
-    dlistint_t *tmp = *head;
+    dlistint_t *tmp;
     unsigned int i = 0;
 
     if (head == NULL || *head == NULL)
         return (-1);
+
+    tmp = *head;
 
     /* cas où on supprime le premier élément */
     if (index == 0)
